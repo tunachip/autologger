@@ -1,0 +1,49 @@
+# chat
+
+
+Okay, i will type here for things i am saying to you - sound good?
+
+coo, so what i am working on now is creating a basic NLP Parser
+Paired then with a tag and description generator
+which encodes with a syntax that an AST based function table can quickly parse & query
+this then can fallback into an AI with access to an API listing our functions if needed
+
+no no, here let me explain per filetype
+
+for text files:
+- NLP finds Nouns and Proper Nouns, then we find most occurances in that file alone
+this sets our 'subjects'
+we then find the 'relationship' of these to eachother and to the file itself
+
+so, example:
+
+imagine this is a file:
+
+'''
+# 11/11/1994
+Dear diary,
+I am 15 and i love cats and dogs but i HATE cows
+burger king breakfast meal
+im gunna have it my way
+- Debra
+'''
+
+ok, so we will tokenize this by nouns
+
+n:  diary cats dogs cows burger king breakfast meal
+pn: debra
+
+then we will find if there are leaders
+for noun of nouns::
+		index = words.get() you get this here, we find the placemnet in raw token array
+		similar, we are looking at 'before' each noun and then if that 
+		word is of adjective type, then we use it as a optional leader
+		otherwise, we give it a filetype-based leader
+
+		photos, videos, and audio have 'of-noun' since of typically denotes sensedata
+		text has 'about-noun' as a default
+		this can be expanded on
+
+the point is that, when we query, the parser uses these to narrow scope
+
+so look over to the left
